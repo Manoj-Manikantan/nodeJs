@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { PatientSchema, SignUpSchema } from '../models/model'
+import { PatientSchema, SignUpSchema, PatientRecordSchema } from '../models/model'
 
 const Patient = mongoose.model('Patient', PatientSchema)
 const SignUp = mongoose.model('SignUp', SignUpSchema)
