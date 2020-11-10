@@ -5,6 +5,7 @@ const Patient = mongoose.model('Patient', PatientSchema)
 const SignUp = mongoose.model('SignUp', SignUpSchema)
 const PatientRecord = mongoose.model('PatientRecord', PatientRecordSchema)
 
+/* Add a new patient */
 export const addNewPatient = (req, res) => {
     let newPatient = new Patient(req.body)
     newPatient.save((err, patient) => {
@@ -16,6 +17,7 @@ export const addNewPatient = (req, res) => {
     })
 }
 
+/* Get list of all patients */
 export const getAllPatients = (req, res) => {
     Patient.find({}, (err, patient) => {
         console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
@@ -26,6 +28,7 @@ export const getAllPatients = (req, res) => {
     })
 }
 
+/* Get a patient's information */
 export const getPatientById = (req, res) => {
     Patient.findById(req.body.patientId, (err, patient) => {
         console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
@@ -36,6 +39,8 @@ export const getPatientById = (req, res) => {
     })
 }
 
+/* SignUp a doctor
+Checks if email already exists, if not signup doctor */
 export const signUp = (req, res) => {
     let newDoctor = new SignUp(req.body)
     var findDoctorByDetail = SignUp.find({ email: newDoctor.email });
@@ -56,6 +61,8 @@ export const signUp = (req, res) => {
     })
 }
 
+/* Login doctor
+Two checks 1. Username and password matches 2. Username exist or not */
 export const login = (req, res) => {
     var findDoctorByDetail = SignUp.find({ userName: req.body.userName });
     findDoctorByDetail.then(function (doctors) {
@@ -68,11 +75,12 @@ export const login = (req, res) => {
                 res.json({ statusCode: 201, rror: "Invalid credentials" })
             }
         } else {
-            res.json({ statusCode: 202, error: "Username does not exist" })
+            res.json({ statusCode: 202, error: "Username does not exist, Please signUp" })
         }
     })
 }
 
+/* Add a patient record */
 export const addPatientRecord = (req, res) => {
     let newPatientRecord = new PatientRecord(req.body)
     newPatientRecord.save((err, record) => {
@@ -84,6 +92,7 @@ export const addPatientRecord = (req, res) => {
     })
 }
 
+/* Get list of patients record  */
 export const getPatientRecords = (req, res) => {
     PatientRecord.find({}, (err, record) => {
         console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)

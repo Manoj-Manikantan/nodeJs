@@ -6,14 +6,14 @@ import bodyParser from 'body-parser'
 const app = express()
 const PORT = 3009
 
-// Mongoose connection
+/* Mongoose connection */
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost/patientDB', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 
-// Body parser setup
+/* Body parser setup */
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
@@ -33,5 +33,4 @@ app.listen(PORT, () => {
     console.log("Doctor SignUp [POST]: http://localhost:3009/doctor/signup");
     console.log("Add Patient Record [POST]: http://localhost:3009/patients/addRecord");
     console.log("Get Patient Records [GET]: http://localhost:3009/patients/getRecords");
-}
-)
+})
