@@ -30,5 +30,6 @@ app.listen(PORT, () => {
     console.log("Get All Patients [GET]: http://localhost:3009/patients/");
     console.log("Add Patient [POST]: http://localhost:3009/patients/");
     console.log("Get Patient Details By Id [POST]: http://localhost:3009/patients/detail");
+    console.log("Doctor SignUp [POST]: http://localhost:3009/doctor/signup");
     }
 )

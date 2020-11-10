@@ -32,3 +32,22 @@ export const PatientSchema = new Schema({
         default: Date.now
     }
 });
+
+export const SignUpSchema = new Schema({
+    userName: {
+        type: String,
+        required: 'Enter user name'
+    },
+    email: {
+        type: String,
+        required: 'Enter email'
+    },
+    password: {
+        type: String,
+        required: 'Enter password'
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
+});

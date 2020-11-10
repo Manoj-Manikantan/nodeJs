@@ -1,14 +1,14 @@
 {
   "name": "milestone-2",
   "version": "1.0.0",
-  "description": "Milestone 2 - REST APIs",
+  "description": "Milestone 3 - Implementing all APIs",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js --exec babel-node -e js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MasumModiCentennial/MAPD713-Assignment-1.git"
+    "url": "git+https://github.com/Manoj-Manikantan/nodeJs/tree/master/MAPD713_Milestone3"
   },
   "keywords": [
     "REST",
@@ -16,7 +16,7 @@
     "Node",
     "Express"
   ],
-  "author": "Masum Modi and Manoj Manikantan Murlitharan",
+  "author": "Masum Modi and Manoj Manikantan Muralidharan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MasumModiCentennial/MAPD713-Assignment-1/issues"
