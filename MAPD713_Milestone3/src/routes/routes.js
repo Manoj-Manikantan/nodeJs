@@ -1,7 +1,7 @@
 import {
     addNewPatient,
     getAllPatients,
-    getPatientById, signUp, login, addPatientRecord
+    getPatientById, signUp, login, addPatientRecord, getPatientRecords
 } from '../controllers/controller'
 
 const routes = (app) => {
@@ -20,6 +20,9 @@ const routes = (app) => {
 
     app.route('/patients/addRecord')
         .post(addPatientRecord)
+
+    app.route('/patients/getRecords')
+        .get(getPatientRecords)
 
 }
 

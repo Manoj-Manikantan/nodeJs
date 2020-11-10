@@ -80,7 +80,17 @@ export const addPatientRecord = (req, res) => {
         if (err) {
             res.send(err)
         }
-        res.json({statusCode:200, record})
+        res.json({ statusCode: 200, record })
+    })
+}
+
+export const getPatientRecords = (req, res) => {
+    PatientRecord.find({}, (err, record) => {
+        console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
+        if (err) {
+            res.send(err)
+        }
+        res.json({ statusCode: 200, record })
     })
 }
 

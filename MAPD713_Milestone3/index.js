@@ -8,18 +8,18 @@ const PORT = 3009
 
 // Mongoose connection
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/patientDB' , {
+mongoose.connect('mongodb://localhost/patientDB', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 
 // Body parser setup
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 routes(app)
 
-app.get('/', (req, res) => 
+app.get('/', (req, res) =>
     res.send(`Node and server running on port ${PORT}`)
 )
 
@@ -32,6 +32,6 @@ app.listen(PORT, () => {
     console.log("Get Patient Details By Id [POST]: http://localhost:3009/patients/detail");
     console.log("Doctor SignUp [POST]: http://localhost:3009/doctor/signup");
     console.log("Add Patient Record [POST]: http://localhost:3009/patients/addRecord");
-    
-    }
+    console.log("Get Patient Records [GET]: http://localhost:3009/patients/getRecords");
+}
 )
