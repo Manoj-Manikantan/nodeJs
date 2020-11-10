@@ -55,3 +55,20 @@ export const signUp = (req, res) => {
     })
 }
 
+export const login = (req, res) => {
+    var findDoctorByDetail = SignUp.find({ userName: req.body.userName });
+    findDoctorByDetail.then(function (doctors) {
+        console.log(`Request doctors.length: ${doctors.length}`)
+        if (doctors.length == 1) {
+            let doctor = doctors[0]
+            if (doctor.password == req.body.password) {
+                res.json({ statusCode: 200, doctor })
+            } else {
+                res.json({ statusCode: 201, rror: "Invalid credentials" })
+            }
+        } else {
+            res.json({ statusCode: 202, error: "Username does not exist" })
+        }
+    })
+}
+
