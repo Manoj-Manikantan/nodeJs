@@ -3,6 +3,7 @@ import { PatientSchema, SignUpSchema } from '../models/model'
 
 const Patient = mongoose.model('Patient', PatientSchema)
 const SignUp = mongoose.model('SignUp', SignUpSchema)
+const PatientRecord = mongoose.model('PatientRecord', PatientRecordSchema)
 
 export const addNewPatient = (req, res) => {
     let newPatient = new Patient(req.body)
@@ -71,4 +72,16 @@ export const login = (req, res) => {
         }
     })
 }
+
+export const addPatientRecord = (req, res) => {
+    let newPatientRecord = new PatientRecord(req.body)
+    newPatientRecord.save((err, record) => {
+        console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
+        if (err) {
+            res.send(err)
+        }
+        res.json({statusCode:200, record})
+    })
+}
+
 

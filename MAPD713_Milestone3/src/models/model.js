@@ -51,3 +51,26 @@ export const SignUpSchema = new Schema({
         default: Date.now
     }
 });
+
+export const PatientRecordSchema = new Schema({
+    bloodPressure: {
+        type: String,
+        required: 'Enter blood pressure'
+    },
+    respiratoryRate: {
+        type: String,
+        required: 'Enter respiratory rate '
+    },
+    oxygenLevel: {
+        type: String,
+        required: 'Enter blood oxygen level'
+    },
+    heartbeatRate: {
+        type: String,
+        required: 'Enter heartbeat rate'
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
+})
