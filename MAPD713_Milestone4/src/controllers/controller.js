@@ -86,6 +86,7 @@ export const login = (req, res) => {
 /* Add a patient record */
 export const addPatientRecord = (req, res) => {
     let newPatientRecord = new PatientRecord(req.body)
+    console.log(`Request newPatientRecord.patientId: ${newPatientRecord.patientId}`)
     newPatientRecord.save((err, record) => {
         console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
         if (err) {
