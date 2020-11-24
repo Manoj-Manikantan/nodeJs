@@ -8,34 +8,37 @@ const PatientRecord = mongoose.model('PatientRecord', PatientRecordSchema)
 /* Add a new patient */
 export const addNewPatient = (req, res) => {
     let newPatient = new Patient(req.body)
+    console.log(`Add Patient -> doctorId: ${newPatient.doctorId}`)
     newPatient.save((err, patient) => {
         console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
         if (err) {
             res.send(err)
         }
-        res.json({statusCode:200, patient})
+        res.json({ statusCode: 200, patient })
     })
 }
 
 /* Get list of all patients */
 export const getAllPatients = (req, res) => {
-    Patient.findById(req.body.doctorId, (err, patient) => {
-        console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
-        if (err) {
-            res.send(err)
+    var getAllPatientsByDoctorId = Patient.find({ doctorId: req.body.doctorId });
+    getAllPatientsByDoctorId.then(function (patients) {
+        console.log(`Request patients.length: ${patients.length}`)
+        if (patients.length == 0) {
+            res.json({ statusCode: 201, error: "No patients found" })
+        } else {
+            res.json({ statusCode: 200, patients })
         }
-        res.json({statusCode:200, patient})
     })
 }
 
-/* Get a patient's information */
+/* Get patient information by Id */
 export const getPatientById = (req, res) => {
     Patient.findById(req.body.patientId, (err, patient) => {
         console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
         if (err) {
             res.send(err)
         }
-        res.json({statusCode:200, patient})
+        res.json({ statusCode: 200, patient })
     })
 }
 
@@ -72,7 +75,7 @@ export const login = (req, res) => {
             if (doctor.password == req.body.password) {
                 res.json({ statusCode: 200, doctor })
             } else {
-                res.json({ statusCode: 201, error: "Invalid credentials" })
+                res.json({ statusCode: 201, rror: "Invalid credentials" })
             }
         } else {
             res.json({ statusCode: 202, error: "Username does not exist, Please signUp" })
@@ -94,22 +97,13 @@ export const addPatientRecord = (req, res) => {
 
 /* Get list of patients record  */
 export const getPatientRecords = (req, res) => {
-    PatientRecord.findById(req.body.patientId, (err, record) => {
-        console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
-        if (err) {
-            res.send(err)
+    var getAllRecordsByPatientId = PatientRecord.find({ patientId: req.body.patientId });
+    getAllRecordsByPatientId.then(function (records) {
+        console.log(`Request records.length: ${records.length}`)
+        if (records.length == 0) {
+            res.json({ statusCode: 201, error: "No records found" })
+        } else {
+            res.json({ statusCode: 200, records })
         }
-        res.json({ statusCode: 200, record })
-    })
-}
-
-/* Delete all patients */
-export const deleteAllPatients = (req, res) => {
-    Patient.deleteMany({}, (err, patient) => {
-        console.log(`Request from: ${req.originalUrl} || Request type: ${req.method}`)
-        if (err) {
-            res.send(err)
-        }
-        res.send()
     })
 }

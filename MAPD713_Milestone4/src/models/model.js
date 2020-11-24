@@ -3,10 +3,6 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const PatientSchema = new Schema({
-    doctorId: {
-        type: String,
-        required: 'Enter doctor Id'
-    },
     fullName: {
         type: String,
         required: 'Enter full name'
@@ -34,6 +30,10 @@ export const PatientSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    }, 
+    doctorId: {
+        type: String,
+        required: 'Enter doctor id'
     }
 });
 
@@ -57,10 +57,6 @@ export const SignUpSchema = new Schema({
 });
 
 export const PatientRecordSchema = new Schema({
-    patientId: {
-        type: String,
-        required: 'Enter Patient Id'
-    },
     bloodPressure: {
         type: String,
         required: 'Enter blood pressure'
@@ -80,5 +76,9 @@ export const PatientRecordSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    patientId: {
+        type: String,
+        required: 'Enter patient id'
     }
 })

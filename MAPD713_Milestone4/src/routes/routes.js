@@ -1,14 +1,16 @@
 import {
     addNewPatient,
     getAllPatients,
-    getPatientById, signUp, login, addPatientRecord, getPatientRecords, deleteAllPatients
+    getPatientById, signUp, login, addPatientRecord, getPatientRecords
 } from '../controllers/controller'
 
 const routes = (app) => {
     app.route('/patients')
         .post(getAllPatients)
+
+    app.route('/addPatient')
         .post(addNewPatient)
-        
+
     app.route('/patients/detail')
         .post(getPatientById)
 
