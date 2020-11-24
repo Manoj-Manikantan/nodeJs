@@ -13,7 +13,7 @@ export const addNewPatient = (req, res) => {
         if (err) {
             res.send(err)
         }
-        res.json({statusCode:200, patient})
+        res.json({ statusCode: 200, patient })
     })
 }
 
@@ -24,7 +24,7 @@ export const getAllPatients = (req, res) => {
         if (err) {
             res.send(err)
         }
-        res.json({statusCode:200, patient})
+        res.json({ statusCode: 200, patient })
     })
 }
 
@@ -35,7 +35,7 @@ export const getPatientById = (req, res) => {
         if (err) {
             res.send(err)
         }
-        res.json({statusCode:200, patient})
+        res.json({ statusCode: 200, patient })
     })
 }
 
@@ -102,5 +102,3 @@ export const getPatientRecords = (req, res) => {
         res.json({ statusCode: 200, record })
     })
 }
-
-
