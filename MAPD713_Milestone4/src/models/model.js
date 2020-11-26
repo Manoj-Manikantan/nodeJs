@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
+/* Fields required to add a patient */
 export const PatientSchema = new Schema({
     fullName: {
         type: String,
@@ -37,6 +38,7 @@ export const PatientSchema = new Schema({
     }
 });
 
+/* Fields required to signUp a doctor */
 export const SignUpSchema = new Schema({
     userName: {
         type: String,
@@ -56,6 +58,7 @@ export const SignUpSchema = new Schema({
     }
 });
 
+/* Fields required to add a patient record */
 export const PatientRecordSchema = new Schema({
     bloodPressure: {
         type: String,
