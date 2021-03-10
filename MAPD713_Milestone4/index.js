@@ -17,13 +17,20 @@ mongoose.connect('mongodb://localhost/patientDB1', {
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+// Add headers
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin","*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 routes(app)
 
 app.get('/', (req, res) =>
     res.send(`Node and server running on port ${PORT}`)
 )
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     require('log-timestamp')
     console.log(`Server is running on http://localhost:${PORT}/`)
     console.log("--------------- End Points -----------");
